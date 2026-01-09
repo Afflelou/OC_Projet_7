@@ -180,6 +180,28 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+#filters {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 2em;
+}
+
+.filter-button{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #1D6154;
+	background-color: white;
+	margin : 2em auto ;
+	width: 180px;
+	border-radius: 60px ;
+}
+
+.filter-button:hover {
+	background-color: #1D6154;
+	cursor: pointer;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
