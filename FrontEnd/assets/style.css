@@ -189,15 +189,14 @@ input[type="submit"]{
 
 .filter-button{
 	font-family: 'Syne';
-	font-weight: 700;
+	font-weight: 600;
 	font-size: 16px;
 	color: #1D6154;
 	background-color: white;
-	height: 37px;
-	width: 160px;
+	padding: 10px;
 	border-radius: 60px;
 	text-align: center;
-	border: #1D6154 2px solid;
+	border: #1D6154 1px solid;
 }
 
 .filter-button:hover {
