@@ -13,14 +13,42 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const loginBtn = document.getElementById('login-btn');
+		const filters = document.getElementById('filters');
+		const editBtn = document.getElementById('edit-btn');
+		const editModeText = document.getElementById('edit-mode');
+
+		if (localStorage.getItem('token')) {
+			filters.style.display = 'none';
+			editBtn.style.display = 'inline-block';
+			editModeText.style.display = 'block';
+			loginBtn.textContent = 'logout';
+			loginBtn.href = '#';
+			loginBtn.addEventListener('click', function (e) {
+				localStorage.removeItem('token');
+				window.location.reload();
+			});
+		} else {
+			filters.style.display = '';
+			editBtn.style.display = 'none';
+			editModeText.style.display = 'none';
+			loginBtn.textContent = 'login';
+			loginBtn.href = 'login.html';
+		}
+	});
+</script>
+
 <body>
 	<header>
+		<p id="edit-mode" style="background-color: black;">Mode édition</p>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li><a href="login.html">login</a></li>
+				<li><a href="login.html" id="login-btn">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -42,9 +70,11 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
-			<div id="filters">
+			<div>
+				<h2>Mes Projets</h2>
+				<button id="edit-btn">modifier</button>
 			</div>
+			<div id="filters"></div>
 			<div class="gallery"></div>
 		</section>
 		<section id="contact">
