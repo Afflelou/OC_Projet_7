@@ -19,6 +19,37 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // Affiche works dans la modale
+    function displayModalGallery(works) {
+        const modalGallery = document.getElementById('modal-gallery');
+        modalGallery.innerHTML = '';
+        works.forEach(work => {
+            // Crée une figure pour chaque work
+            const figure = document.createElement('figure');
+            figure.classList.add('modal-figure');
+
+            // Ajoute l'image du work
+            const img = document.createElement('img');
+            img.src = work.imageUrl;
+
+            // Icône corbeille (SVG)
+            const trash = document.createElement('span');
+            trash.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`;
+            trash.classList.add('trash-icon');
+
+            // Suppression du work de la liste affichée (pas du serveur)
+            trash.addEventListener('click', () => {
+                allWorks = allWorks.filter(w => w.id !== work.id);
+                displayModalGallery(allWorks);
+                displayWorks(allWorks);
+            });
+            figure.appendChild(img);
+            figure.appendChild(trash);
+            modalGallery.appendChild(figure);
+        });
+
+    }
+
     // Récupère les filtres
     try {
         const response = await fetch('http://localhost:5678/api/categories');
@@ -65,4 +96,59 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     });
+
+    // Gère l'état de connexion
+    const loginBtn = document.getElementById('login-btn');
+    const filters = document.getElementById('filters');
+    const editBtn = document.getElementById('edit-btn');
+    const editModeText = document.getElementById('edit-mode');
+
+    // Si token présent, affiche mode édition
+    if (localStorage.getItem('token')) {
+        filters.style.display = 'none';
+        editBtn.style.display = 'inline-block';
+        editModeText.style.display = 'block';
+        loginBtn.textContent = 'logout';
+        loginBtn.href = '#';
+        loginBtn.addEventListener('click', function (e) {
+            localStorage.removeItem('token');
+            filters.style.display = 'inline-block';
+            editBtn.style.display = 'none';
+            editModeText.style.display = 'none';
+            loginBtn.textContent = 'login';
+            loginBtn.href = 'index.html';
+        });
+    }
+    // Sinon, affiche mode visiteur
+    else {
+        filters.style.display = '';
+        editBtn.style.display = 'none';
+        editModeText.style.display = 'none';
+        loginBtn.textContent = 'login';
+        loginBtn.href = 'login.html';
+    }
+
+    // Overlay modale
+    const modalOverlay = document.getElementById('modal-overlay');
+    const closeModal = document.getElementById('close-modal');
+
+    if (editBtn) {
+        editBtn.addEventListener('click', function () {
+            if (modalOverlay) modalOverlay.style.display = 'block';
+            displayModalGallery(allWorks);
+
+        });
+    }
+    // Fermer la modale en cliquant sur le bouton de fermeture
+    if (closeModal) {
+        closeModal.addEventListener('click', function () {
+            if (modalOverlay) modalOverlay.style.display = 'none';
+        });
+    }
+    // Fermer la modale en cliquant en dehors du contenu
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function (e) {
+            if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+        });
+    }
 });

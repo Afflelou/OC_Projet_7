@@ -13,34 +13,17 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const loginBtn = document.getElementById('login-btn');
-		const filters = document.getElementById('filters');
-		const editBtn = document.getElementById('edit-btn');
-		const editModeText = document.getElementById('edit-mode');
-
-		if (localStorage.getItem('token')) {
-			filters.style.display = 'none';
-			editBtn.style.display = 'inline-block';
-			editModeText.style.display = 'block';
-			loginBtn.textContent = 'logout';
-			loginBtn.href = '#';
-			loginBtn.addEventListener('click', function (e) {
-				localStorage.removeItem('token');
-				window.location.reload();
-			});
-		} else {
-			filters.style.display = '';
-			editBtn.style.display = 'none';
-			editModeText.style.display = 'none';
-			loginBtn.textContent = 'login';
-			loginBtn.href = 'login.html';
-		}
-	});
-</script>
-
 <body>
+	<!-- Modale -->
+	<div id="modal-overlay">
+		<div id="modal-content">
+			<button id="close-modal">&times;</button>
+			<h3>Galerie photo</h3>
+			<div id="modal-gallery"></div>
+			<button id="add-photo">Ajouter une photo</button>
+		</div>
+	</div>
+	<!-- Header -->
 	<header>
 		<p id="edit-mode" style="background-color: black;">Mode édition</p>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -54,6 +37,7 @@
 		</nav>
 	</header>
 	<main>
+		<!-- Intro -->
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
@@ -69,6 +53,7 @@
 					décorateur(trice)</p>
 			</article>
 		</section>
+		<!-- Portfolio -->
 		<section id="portfolio">
 			<div>
 				<h2>Mes Projets</h2>
