@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Affiche works
     function displayWorks(works) {
+
         gallery.innerHTML = '';
         works.forEach(work => {
             const figure = document.createElement('figure');
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             img.alt = work.title;
             const caption = document.createElement('figcaption');
             caption.textContent = work.title;
+            figure.classList.add('gallery-figure');
+            figure.dataset.workid = work.id;
             figure.appendChild(img);
             figure.appendChild(caption);
             gallery.appendChild(figure);
@@ -32,16 +35,43 @@ document.addEventListener('DOMContentLoaded', async () => {
             const img = document.createElement('img');
             img.src = work.imageUrl;
 
+            // Ajoute l'ID du work à la figure
+            figure.dataset.workid = work.id;
+
             // Icône corbeille (SVG)
             const trash = document.createElement('span');
-            trash.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`;
+            trash.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`;
             trash.classList.add('trash-icon');
 
-            // Suppression du work de la liste affichée (pas du serveur)
-            trash.addEventListener('click', () => {
-                allWorks = allWorks.filter(w => w.id !== work.id);
-                displayModalGallery(allWorks);
-                displayWorks(allWorks);
+            // Suppression du work de la liste affichée
+            trash.addEventListener('click', async (event) => {
+                event.stopPropagation();
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    alert('Vous devez être connecté pour supprimer un projet.');
+                    return;
+                }
+                try {
+                    const response = await fetch(`http://localhost:5678/api/works/${work.id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            accept: 'application/json',
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        }
+                    });
+                    if (response.ok) {
+                        // Supprime la figure de la modale
+                        const workId = figure.dataset.workid;
+                        figure.remove();
+                        const workFigure = document.querySelector(`.gallery figure[data-workid="${workId}"]`);
+                        workFigure.remove();
+                    }
+                    else {
+                        throw new Error('Erreur lors de la suppression du projet.');
+                    }
+                } catch (error) {
+                    alert('Erreur réseau');
+                }
             });
             figure.appendChild(img);
             figure.appendChild(trash);
