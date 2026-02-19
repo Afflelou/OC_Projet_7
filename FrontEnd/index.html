@@ -17,15 +17,38 @@
 	<!-- Modale -->
 	<div id="modal-overlay">
 		<div id="modal-content">
-			<button id="close-modal">&times;</button>
-			<h3>Galerie photo</h3>
-			<div id="modal-gallery"></div>
-			<button id="add-photo">Ajouter une photo</button>
+			<div id="first-modal">
+				<button id="close-modal">&times;</button>
+				<h3 id="modal-title"></h3>
+				<div id="modal-gallery"></div>
+				<button id="add-photo">Ajouter une photo</button>
+			</div>
+			<div id="second-modal">
+				<form id="add-photo-form" style="display:none;" enctype="multipart/form-data">
+					<div class="add-photo-upload-box">
+						<img id="photo-preview" class="add-photo-preview" style="display:none;" />
+						<label for="photo-input" class="add-photo-label">+ Ajouter photo</label>
+						<input type="file" id="photo-input" name="image" accept="image/*" required>
+					</div>
+					<label for="title-input">Titre</label>
+					<input type="text" id="title-input" name="title" required>
+					<span id="category-title">Catégorie</span>
+					<input type="submit" value="Valider" class="add-btn">
+					<button id="back-to-gallery" type="button" style="display:none;">Retour</button>
+				</form>
+			</div>
 		</div>
 	</div>
 	<!-- Header -->
 	<header>
-		<p id="edit-mode">Mode édition</p>
+		<div id="edit-mode">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+				stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+				<polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+			</svg>
+			<p>Mode édition</p>
+		</div>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
