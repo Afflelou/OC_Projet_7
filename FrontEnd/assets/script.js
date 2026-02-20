@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Affiche la galerie
         modalTitle.textContent = 'Galerie photo';
         modalGallery.style.display = 'grid';
-        addPhotoBtn.style.display = 'block';
+        addPhotoBtn.style.display = 'flex';
         addPhotoForm.style.display = 'none';
         backBtn.style.display = 'none';
         modalGallery.innerHTML = '';
@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         modalTitle.textContent = 'Ajout photo';
         modalGallery.style.display = 'none';
         addPhotoBtn.style.display = 'none';
-        addPhotoForm.style.display = 'block';
-        backBtn.style.display = 'block';
+        addPhotoForm.style.display = 'flex';
+        backBtn.style.display = 'flex';
     }
 
     // Preview image
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const reader = new FileReader();
                 reader.onload = function (evt) {
                     photoPreview.src = evt.target.result;
-                    photoPreview.style.display = 'block';
+                    photoPreview.style.display = 'flex';
                     photoLabel.style.display = 'none';
                 };
                 reader.readAsDataURL(file);
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     if (editBtn) {
         editBtn.addEventListener('click', function () {
-            if (modalOverlay) modalOverlay.style.display = 'block';
+            if (modalOverlay) modalOverlay.style.display = 'flex';
             displayModalGallery(allWorks);
 
         });
