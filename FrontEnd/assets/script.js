@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Affiche la galerie
         modalTitle.textContent = 'Galerie photo';
-        modalGallery.style.display = 'block';
+        modalGallery.style.display = 'grid';
         addPhotoBtn.style.display = 'block';
         addPhotoForm.style.display = 'none';
         backBtn.style.display = 'none';
@@ -214,12 +214,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (localStorage.getItem('token')) {
         filters.style.display = 'none';
         editBtn.style.display = 'inline-block';
-        editModeText.style.display = 'block';
+        editModeText.style.display = 'flex';
         loginBtn.textContent = 'logout';
         loginBtn.href = '#';
         loginBtn.addEventListener('click', function (e) {
             localStorage.removeItem('token');
-            filters.style.display = 'inline-block';
+            filters.style.display = '';
             editBtn.style.display = 'none';
             editModeText.style.display = 'none';
             loginBtn.textContent = 'login';
