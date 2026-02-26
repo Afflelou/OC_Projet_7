@@ -18,23 +18,41 @@
 	<div id="modal-overlay">
 		<div id="modal-content">
 			<div id="first-modal">
-				<button id="close-modal">&times;</button>
+				<button id="close-modal"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+						viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+						stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg></button>
 				<p id="modal-title"></p>
 				<div id="modal-gallery"></div>
-				<button class="add-btn" id="add-photo">Ajouter une photo</button>
+				<div class="separator"></div>
+				<input class="add-btn" id="add-photo" type="button" value="Ajouter une photo">
 			</div>
 			<div id="second-modal">
 				<form id="add-photo-form" style="display:none;" enctype="multipart/form-data">
 					<div class="add-photo-upload-box">
+						<svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" viewBox="0 0 24 24" fill="none"
+							stroke="#B9C5CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<rect x="3" y="3" width="18" height="18" rx="2" />
+							<circle cx="8.5" cy="8.5" r="1.5" />
+							<path d="M20.4 14.5L16 10 4 20" />
+						</svg>
 						<img id="photo-preview" class="add-photo-preview" style="display:none;" />
 						<label for="photo-input" class="add-photo-label">+ Ajouter photo</label>
 						<input type="file" id="photo-input" name="image" accept="image/*" required>
+						<p id="file-format">jpg, png : 4mo max</p>
 					</div>
 					<label for="title-input">Titre</label>
 					<input type="text" id="title-input" name="title" required>
 					<span id="category-title">Catégorie</span>
-					<input type="submit" value="Valider" class="add-btn">
-					<button id="back-to-gallery" type="button" style="display:none;">Retour</button>
+					<div class="separator"></div>
+					<input type="submit" value="Valider">
+					<button id="back-to-gallery" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+							height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<path d="M19 12H6M12 5l-7 7 7 7" />
+						</svg></button>
 				</form>
 			</div>
 		</div>
@@ -55,7 +73,7 @@
 				<li>projets</li>
 				<li>contact</li>
 				<li><a href="login.html" id="login-btn">login</a></li>
-				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+				<li><img id="instagram-icon" src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>

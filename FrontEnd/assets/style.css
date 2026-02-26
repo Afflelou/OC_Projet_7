@@ -152,6 +152,11 @@ section {
 	margin: 50px 0
 }
 
+#instagram-icon {
+	width: 20px;
+	height: 20px;
+}
+
 h1 {
 	display: flex;
 	flex-direction: column;
@@ -162,7 +167,7 @@ h1 {
 }
 
 h1>span {
-	font-family: 'Work Sans';
+	font-family: 'Syne';
 	font-size: 10px;
 	letter-spacing: 0.1em;
 	;
@@ -191,6 +196,11 @@ li:hover {
 	color: #B1663C;
 }
 
+#forgot-password {
+	text-align: center;
+	color: #3D3D3D;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -216,6 +226,9 @@ li:hover {
 
 #introduction p {
 	margin-bottom: 0.5em;
+	font-family: "Work Sans";
+	font-size: 14px;
+	max-width: 400px;
 }
 
 #portfolio h2 {
@@ -258,11 +271,13 @@ li:hover {
 	flex-direction: column;
 }
 
-#contact input {
-	height: 50px;
+#contact input,
+#add-photo-form input {
+	height: 36px;
 	font-size: 1.2em;
-	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	font-family: 'Work Sans';
 }
 
 #contact label {
@@ -274,6 +289,17 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
+input[type="submit"] {
+	font-family: 'Work Sans';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 2em auto;
+	width: 237px;
+	text-align: center;
+	border-radius: 60px;
+}
+
 #filters {
 	display: flex;
 	justify-content: center;
@@ -282,7 +308,7 @@ li:hover {
 }
 
 .filter-button {
-	font-family: 'Syne';
+	font-family: 'Work Sans';
 	font-weight: 600;
 	font-size: 16px;
 	color: #1D6154;
@@ -322,8 +348,10 @@ footer nav ul {
 	font-weight: 300;
 	font-size: 26px;
 	color: black;
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
+	margin-top: 1em;
 	text-align: center;
+
 }
 
 #modal-content {
@@ -331,9 +359,9 @@ footer nav ul {
 	margin: 10vh auto;
 	padding: 2em;
 	border-radius: 8px;
-	width: 60%;
 	position: relative;
-	height: 400px;
+	height: 630px;
+	width: 600px;
 }
 
 #close-modal {
@@ -347,10 +375,14 @@ footer nav ul {
 
 #modal-gallery {
 	display: grid;
-	width: 100%;
-	grid-template-columns: repeat(5, 75px);
-	gap: 4px;
+	grid-template-columns: repeat(5, 84px);
+	grid-template-rows: repeat(3, 120px);
 	justify-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	row-gap: 0.5em;
+	width: 420px;
+	height: 400px;
 }
 
 .modal-figure {
@@ -360,16 +392,21 @@ footer nav ul {
 }
 
 .modal-figure img {
-	width: 70px;
-	height: auto;
+	width: 77px;
+	height: 103px;
 }
 
 .trash-icon {
+	text-align: center;
 	position: absolute;
 	top: 5px;
 	right: 5px;
+	width: 14px;
+	height: 14px;
 	cursor: pointer;
 	background-color: black;
+	border-radius: 2px;
+	padding-top: 2px;
 }
 
 #first-modal {
@@ -405,6 +442,15 @@ footer nav ul {
 	color: inherit;
 	text-decoration: none;
 	font: inherit;
+	font-weight: 400;
+}
+
+#login-btn.active {
+	font-weight: 700;
+	text-shadow: .2px 0 #000,
+		-0.2px 0 #000,
+		0 0.2px #000,
+		0 -0.2px #000
 }
 
 #portfolio-header {
@@ -433,16 +479,40 @@ footer nav ul {
 	margin-left: 35%;
 }
 
+#file-format {
+	font-size: 10px;
+	font-family: 'Work Sans';
+	color: #444444;
+	margin-top: 5px;
+}
+
+.separator {
+	width: 420px;
+	margin-top: 2em;
+	justify-content: center;
+	border-top: 1px solid #B3B3B3;
+	margin-left: auto;
+	opacity: 0.5;
+	margin-right: auto;
+}
+
+#back-to-gallery {
+	display: none;
+}
+
 .add-btn {
 	font-family: 'Work Sans';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
 	margin: 2em auto;
-	width: 180px;
-	border-radius: 60px;
+	width: 237px;
 	text-align: center;
-	cursor: pointer;
+	border-radius: 60px;
+	height: 36px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 .add-photo-preview {
@@ -461,9 +531,10 @@ footer nav ul {
 
 #add-photo-form label {
 	margin-top: 1em;
-	margin-bottom: 0.5em;
 	display: block;
-	font-weight: 600;
+	font-weight: 500;
+	font-family: 'Work Sans';
+	font-size: 14px;
 }
 
 #add-photo-form input[type="file"] {
@@ -471,11 +542,14 @@ footer nav ul {
 }
 
 #add-photo-form input[type="text"] {
-	width: 100%;
-	padding: 0.5em;
+	padding-left: 1em;
+	padding-right: 1em;
 	margin-bottom: 1em;
-	border: 1px solid #ccc;
+	margin-top: 1em;
 	border-radius: 4px;
+	color: #444444;
+	font-size: 14px;
+	height: 50px;
 }
 
 #add-photo-form .add-btn {
@@ -496,6 +570,29 @@ footer nav ul {
 	cursor: pointer;
 	transition: background 0.2s;
 	margin-bottom: 0;
+}
+
+#category-title {
+	font-family: 'Work Sans';
+	font-weight: 500;
+	font-size: 14px;
+	margin-top: 1em;
+}
+
+#category-input {
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-bottom: 0.5em;
+	border-radius: 4px;
+	color: #444444;
+	margin-top: 1em;
+	display: block;
+	font-weight: 400;
+	height: 50px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	font-family: 'Work Sans';
+	font-size: 14px;
 }
 
 #photo-input {
