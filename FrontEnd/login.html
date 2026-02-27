@@ -55,6 +55,7 @@
         const email = document.getElementById('email').value;
         const password = document.getElementById('mdp').value;
 
+        // Call API pour authentification
         try {
             const response = await fetch('http://localhost:5678/api/users/login', {
                 method: 'POST',

@@ -575,6 +575,10 @@ footer nav ul {
 	height: 50px;
 }
 
+#submit-add-photo {
+	background-color: #A7A7A7;
+}
+
 #add-photo-form .add-btn {
 	margin-top: 1em;
 }

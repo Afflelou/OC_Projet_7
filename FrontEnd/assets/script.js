@@ -287,13 +287,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             const photoInput = document.getElementById('photo-input');
             const titleInput = document.getElementById('title-input');
             const categorySelect = document.getElementById('category-input');
+            const submitBtn = document.getElementById('submit-add-photo');
             const file = photoInput.files[0];
             const title = titleInput.value.trim();
             const category = categorySelect.value;
-            if (!file || !title || !category) {
-                alert('Veuillez remplir tous les champs.');
-                return;
-            }
             const formData = new FormData();
             formData.append('image', file);
             formData.append('title', title);
@@ -313,6 +310,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     categorySelect.value = '';
                     titleInput.value = '';
                     photoInput.value = '';
+                    submitBtn.style.backgroundColor = '#A7A7A7';
                     const photoPreview = document.getElementById('photo-preview');
                     const photoLabel = document.querySelector('.add-photo-label');
                     if (photoPreview && photoLabel) {
@@ -328,4 +326,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     }
+
+    // Active le bouton Valider si tous les champs sont remplis
+    const titleInput = document.getElementById('title-input');
+    const categorySelect = document.getElementById('category-input');
+    const submitBtn = document.getElementById('submit-add-photo');
+    function checkFormValidity() {
+        if (photoInput.files.length > 0 && titleInput.value.trim() !== '' && categorySelect.value !== '') {
+            submitBtn.disabled = false;
+            submitBtn.style.backgroundColor = '#1D6154';
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.style.backgroundColor = '#A7A7A7';
+        }
+    }
+    titleInput.addEventListener('input', checkFormValidity);
+    categorySelect.addEventListener('change', checkFormValidity);
+    photoInput.addEventListener('change', checkFormValidity);
 });
