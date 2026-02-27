@@ -109,6 +109,19 @@ section {
 
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
+}
+
+footer{
+	background-color: #FFFFFF;
+}
+
+footer li {
+	margin-top: 1.5em;
+	font-size: 14px;
+	font-family: "Work Sans";
+	font-style: normal;
+	font-weight: 300;
 }
 
 ol,
@@ -453,6 +466,10 @@ footer nav ul {
 		0 -0.2px #000
 }
 
+#login-main {
+	height: 600px;
+}
+
 #portfolio-header {
 	display: flex;
 	align-items: center;
@@ -476,7 +493,13 @@ footer nav ul {
 	border: none;
 	background: none;
 	cursor: pointer;
-	margin-left: 35%;
+	margin-left: 30%;
+}
+
+#edit-btn-text {
+	display: flex;
+	margin-left: 1em;
+	margin-top: 2px;
 }
 
 #file-format {

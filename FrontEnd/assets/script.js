@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Si token présent, affiche mode édition
     if (localStorage.getItem('token')) {
         filters.style.display = 'none';
-        editBtn.style.display = 'inline-block';
+        editBtn.style.display = 'flex';
         editModeText.style.display = 'flex';
         loginBtn.textContent = 'logout';
         loginBtn.href = '#';
